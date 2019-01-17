@@ -18,6 +18,10 @@ let addShoppingItem = entry => {
   $('.shopping-list').append(generateItemHTML(entry));
 };
 
+let removeShoppingItem = entry => {
+  entry.remove();
+};
+
 let toggleChecked = entry => {
   entry.toggleClass('shopping-item__checked');
 };
@@ -34,11 +38,16 @@ function main() {
   });
 
   //check event
-  $('.shopping-item-toggle').click(function(event) {
+  $('ul').on('click', '.shopping-item-toggle', function(event) {
     let item = $(this)
       .closest('li')
       .find('.shopping-item');
     toggleChecked(item);
+  });
+
+  // delete event
+  $('ul').on('click', '.shopping-item-delete', function(event) {
+    removeShoppingItem($(this).closest('li'));
   });
 }
 
