@@ -18,13 +18,27 @@ let addShoppingItem = entry => {
   $('.shopping-list').append(generateItemHTML(entry));
 };
 
+let toggleChecked = entry => {
+  entry.toggleClass('shopping-item__checked');
+};
+
 function main() {
+  //add event
   $('#js-shopping-list-form').submit(function(event) {
     event.preventDefault();
     let item = $(event.currentTarget)
       .find('#shopping-list-entry')
       .val();
     addShoppingItem(item);
+    event.target.reset();
+  });
+
+  //check event
+  $('.shopping-item-toggle').click(function(event) {
+    let item = $(this)
+      .closest('li')
+      .find('.shopping-item');
+    toggleChecked(item);
   });
 }
 
