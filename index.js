@@ -70,7 +70,11 @@ function getItemIndexFromElement(item) {
     .closest('.js-item-index-element')
     .attr('data-item-index');
 
-  STORE.items.find(i => i.id === itemID);
+  for (let i = 0; i < STORE.items.length; i++) {
+    if (STORE.items[i].id === itemID) {
+      return i;
+    }
+  }
 
   return -1;
 }
@@ -82,7 +86,9 @@ function toggleHideChecked() {
 function handleItemCheckClicked() {
   $('.js-shopping-list').on('click', `.js-item-toggle`, event => {
     console.log('`handleItemCheckClicked` ran');
+    debugger;
     const itemIndex = getItemIndexFromElement(event.currentTarget);
+    debugger;
     toggleCheckedForListItem(itemIndex);
     renderShoppingList();
   });
