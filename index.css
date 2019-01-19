@@ -47,6 +47,22 @@ button:hover {
   margin-bottom: 15px;
 }
 
+.shopping-item-edit-name {
+  color: grey;
+  font-style: italic;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
 .shopping-item__checked {
   text-decoration: line-through;
+}
+
+input.query-search {
+  width: 352px;
+  display: block;
+}
+
+.hidden {
+  display: none;
 }
